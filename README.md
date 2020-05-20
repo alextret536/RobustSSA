@@ -1,7 +1,7 @@
 # RobustSSA
 Robust versions of singular spectrum analysis method
 
-### IRLS_orig.R
+### IRLS_original.R
 Contains implementation of original IRLS method
 
 ### IRLS_modification.R
@@ -12,3 +12,9 @@ Contains L2-hankelization, L1-hankelization and weighted L2-hankelization (is eq
 
 ### weights.R
 Contains weight function for IRLS methods
+
+### model_example.R
+Contains model example of methods usage
+
+### real_example.R
+Contains real example of methods usage
