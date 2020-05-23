@@ -13,23 +13,23 @@ plot(wcor(s))
 X<-hankel(series, L=L)
 rnk<-8
 
-Pr<-IRLS_mod(X,rnk,'loess')
+Pr<-IRLS_mod(X,rnk,'loess') #IRLS modification (trend extraction with loess)
 Pr0<-hankL2(Pr)
 
-Pr<-IRLS_mod(X,rnk,'median')
+Pr<-IRLS_mod(X,rnk,'median') #IRLS modification (trend extraction with median)
 Pr1<-hankL2(Pr)
 
-Pr<-IRLS_mod(X,rnk,'lowess')
+Pr<-IRLS_mod(X,rnk,'lowess') #IRLS modification (trend extraction with lowess)
 Pr2<-hankL2(Pr)
 
-Pr<-IRLS_orig(X,rnk)
+Pr<-IRLS_orig(X,rnk) #IRLS original
 Pr3<-hankL2(Pr)
 
-s.L1svd<-l1pca(X,center=FALSE,projections="l1",projDim=rnk)
+s.L1svd<-l1pca(X,center=FALSE,projections="l1",projDim=rnk) #l1pca
 Pr<-s.L1svd$projPoints
 Pr.L1<-hankL1(Pr)
 
-rec <- reconstruct(s, groups = list(c(1:rnk)))
+rec <- reconstruct(s, groups = list(c(1:rnk))) 
 trend.season <- rec$F1
 
 
