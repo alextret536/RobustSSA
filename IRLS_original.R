@@ -9,10 +9,13 @@ IRLS_orig<-function(M, k, alpha=4.685, eps=1e-5, maxITER=20, maxiter=10){
   n<-ncol(M)
   initial<-svd(M) #initialization U and V using svd
   U<-initial$u[1:nrow(initial$u),1:k]
+  U <- as.matrix(U, nrow = nrow(U), ncol = k)
   Lambda<-initial$d[1:k]
   V<-initial$v[1:nrow(initial$v),1:k]
+  U<-U%*%diag(Lambda, nrow = k, ncol = k)
   ITER<-0
   iter<-0
+  V <- as.matrix(V, nrow = nrow(), ncol = k)
   
   repeat {
     R<-M-U%*%t(V) #residuals matrix
@@ -32,6 +35,7 @@ IRLS_orig<-function(M, k, alpha=4.685, eps=1e-5, maxITER=20, maxiter=10){
         U[i,1:ncol(U)]<-beta
       }
       U<-U[1:nrow(U),1:k]
+      U <- as.matrix(U, nrow = nrow(U), ncol = k)
       
       # updating V using QR-decomposition
       for (j in (1:n)){
@@ -44,6 +48,7 @@ IRLS_orig<-function(M, k, alpha=4.685, eps=1e-5, maxITER=20, maxiter=10){
         V[j,1:ncol(V)]<-beta
       }
       V<-V[1:nrow(V),1:k]
+      V <- as.matrix(V, nrow = nrow(V), ncol = k)
       
       iter<-iter+1
       if ( ((frobenius.norm(W^{1/2}*(M-U%*%t(V))))^2<eps) | (iter > maxiter) ) {break}
