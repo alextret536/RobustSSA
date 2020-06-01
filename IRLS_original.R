@@ -4,14 +4,14 @@
 # maxITER --- number of iterations N_IRLS
 # maxiter --- number of iterations N_alpha
 
-IRLS_orig<-function(M, k, alpha=4.685, eps=1e-5, maxITER=20, maxiter=10){
+IRLS_orig<-function(M, k, alpha=4.685, eps=1e-5, maxITER=10, maxiter=5){
   m<-nrow(M)
   n<-ncol(M)
-  initial<-svd(M) #initialization U and V using svd
-  U<-initial$u[1:nrow(initial$u),1:k]
+  initial<-propack.svd(M, neig = k) #initialization U and V using svd
+  U<-initial$u
   U <- as.matrix(U, nrow = nrow(U), ncol = k)
-  Lambda<-initial$d[1:k]
-  V<-initial$v[1:nrow(initial$v),1:k]
+  Lambda<-initial$d
+  V<-initial$v
   U<-U%*%diag(Lambda, nrow = k, ncol = k)
   ITER<-0
   iter<-0
