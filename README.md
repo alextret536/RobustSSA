@@ -8,7 +8,7 @@ Contains implementation of original IRLS method
 Contains implementation of modified IRLS method
 
 ### hankelization.R
-Contains L2-hankelization, L1-hankelization and weighted L2-hankelization (is equal to L2-hankelization if if W is hankel matrix)
+Contains L2-hankelization, L1-hankelization and weighted L2-hankelization (is equal to L2-hankelization if W is hankel matrix)
 
 ### weights.R
 Contains weight function for IRLS methods
@@ -16,5 +16,5 @@ Contains weight function for IRLS methods
 ### model_example.R
 Contains model example of methods usage
 
-### real_example.R
+### real_example_gaps.R
 Contains real example of methods usage
